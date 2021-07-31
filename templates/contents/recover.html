@@ -1,0 +1,52 @@
+<div class="fav-container container">
+    <div class="row favorites-wrapper">
+        <div class="youtube-preview-container text-center col d-grid">
+            <h3 class="text-center preview-title m-4">Preview youtube enjoy your favorites videos</h3>
+            <?php if ($links) : foreach ($links as $link) : ?>
+                    <?php if ($link['preview']) : ?>
+                        <div class="iframe-wrapper">
+                            <iframe 
+                                width="250" 
+                                height="200" 
+                                src="<?= $link['preview'] ?>" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                            <div class="preview-action">
+                                <a href="/remove-fav?fav=<?= urldecode($link['href']) ?>">
+                                    <i class="fas fa-trash text-danger"></i>
+                                </a>
+                                <a href="/modify-fav?fav=<?= $link['href'] ?>">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+            <?php endforeach;
+            endif; ?>
+        </div>
+
+
+
+        <div class="links-container col">
+            <h3 class="text-center m-5">Your favrorites links</h3>
+            <div class="fav-link-container"> <!-- list-group -->
+                <?php foreach ($links as $link) : if ($links && !$link['preview']) : ?>
+                    <div class="fav-wrapper"> <!-- list-group-item -->
+                        <a class="link-item text-dark" href="<?= urldecode($link['href']) ?>">
+                            <img width="18px" src="<?= $link['favicon'] ?>" alt="favicon" />
+                            <?= $link['title'] ?>
+                        </a>
+                        <div class="fav-action">
+                            <a href="/remove-fav?fav=<?= $link['href'] ?>">
+                                <i class="text-danger fas fa-trash"></i>
+                            </a>
+                        </div>
+                    </div>
+                <?php endif; endforeach; ?>
+            </div>
+        </div>
+    </div>
+</div>

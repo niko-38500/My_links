@@ -1,0 +1,354 @@
+body {
+    background: #282c30 !important;
+}
+
+a {
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.bg-perso {
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(91, 58, 180, 0.658) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+}
+
+.mt-center {
+    position: relative;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.separator {
+    height: 2.3em;
+}
+
+::-webkit-scrollbar {
+    width: 13px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius:10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+} 
+
+* {
+    color: #fff !important;
+}
+
+.navbar {
+    /* background: linear-gradient(#212529, grey); */
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(91, 58, 180, 0.658) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    padding: .8em;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 2.5em;
+    font-family: 'Dancing Script', cursive;;
+}
+
+h3 {
+    font-weight: 400;
+    font-size: 1.5em
+}
+
+iframe {
+    min-width: 100%;
+    min-height: 37.5vh;
+}
+
+#slide-show {
+    margin-bottom: -3em;
+}
+
+#hz-scroll {
+    overflow-y: hidden;
+    overflow-x: scroll;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 2em;
+}
+
+#hz-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.img-hz {
+    height: 50%;
+}
+
+.fav-wrapper {
+    position: relative;
+}
+
+.fav-action {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    display: none;
+}
+
+.fav-wrapper:hover .fav-action {
+    display: inline;
+}
+
+.d-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .7em;
+}
+
+.iframe-wrapper {
+    position: relative;
+}
+
+.preview-action {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    display: none;
+}
+
+.iframe-wrapper:hover .preview-action {
+    display: inline;
+}
+
+@media (max-width: 555px) {
+    .d-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .preview-title {
+        grid-column: unset;
+    }
+
+    .favorites-wrapper {
+        flex-direction: column-reverse;
+    }
+}
+
+
+/* caroussel */
+
+/* wrapper of the carousel */
+.carousel-wrapper {
+    position: relative;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    height: 85vh;
+    width: 100%;
+}
+
+.carousel-wrapper * {
+    box-sizing: border-box;
+}
+
+/* images into the carousel */
+.carousel-img {
+    width: 100%;
+    min-height: 100%;
+    z-index: 100;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transition: cubic-bezier(1,.45,.65,.07) .7s; /* go to https://cubic-bezier.com/ to draw your own cubic-bezier */
+}
+
+@media (max-width: 900px) {
+    .carousel-wrapper {
+        max-height: 22em;
+    }
+}
+
+@media (max-width: 600px) {
+    .carousel-wrapper {
+        max-height: 14em;
+    }
+}
+
+/* container of the the left and right arrows */
+.left-arrow,
+.right-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    border: white 1px solid;
+    transition: all .6s;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.left-arrow {
+    margin-left: 1em;
+}
+
+.right-arrow {
+    margin-right: 1em;
+    right: 0;
+}
+
+/* arrow icon pick on font awsome */
+.fa-chevron-left,
+.fa-chevron-right {
+    color: white;
+}
+
+/* Detect if the user has a cursor */
+@media (pointer: fine) { 
+    /* hover effect of the arrow */
+    .right-arrow:hover,
+    .left-arrow:hover {
+        background-color: rgba(139, 139, 139, 0.397);
+        border-radius: unset;
+        margin: unset;
+        height: 100%;
+        width: 30%;
+        border: unset;
+    }
+}
+
+/* contents inside the image of the carousel */
+.img-content {
+    display: grid;
+    grid-template-columns: .7fr 5fr 1fr;
+    color: white;
+    position: absolute;
+    bottom: 20%;
+    z-index: 500;
+    opacity: 0;
+    transition: cubic-bezier(0.55, 0.055, 0.675, 0.19) .7s;
+}
+
+.img-content > span > h2 {
+    font-size: calc(0.8em + 10vmin);
+}
+
+.img-content > span > p {
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+    font-size: calc(0.75em + 1.7vmin);
+    text-align: justify;
+}
+
+a.carousel-btn {
+    color: white;
+    background-color: teal;
+    text-decoration: none;
+    padding: 1.4vh 2vw;
+    border-radius: .5em;
+}
+
+@media (max-width: 900px) {
+    .img-content {
+        bottom: 60px;
+    }
+    
+    .img-content > span > h2 {
+        font-size: calc(0.6em + 6vmin);
+    }
+    
+    .img-content > span > p {
+        font-size: calc(0.7em + 1.3vmin);
+    }
+}
+
+@media (max-width: 600px) {
+    .img-content {
+        grid-template-columns: 1.8fr 5fr 1.9fr;
+        bottom: 45px;
+        text-align: center;
+    }
+
+    .img-content > span > h2 {
+        font-size: calc(0.6em + 5vmin);
+    }
+    
+    .img-content > span > p {
+        font-size: calc(0.6em + 1vmin);
+    }
+
+    a.carousel-btn {
+        padding: .4vh 1.1vw;
+    }
+}
+
+/* 
+    class name: 
+        initial = when the carousel start
+        active  = displayed image
+        prev    = transplate the element to the left
+        next    = translate the element to the right 
+    those class name are attributed with JS (ref to the "script.js" file)
+    they are affected to the pictures, the dots and the text content inside the images
+*/
+.img-content.initial,
+.img-content.active,
+.carousel-img.initial,
+.carousel-img.active {
+    opacity: 1;
+    z-index: 900;
+}
+
+.img-content.next,
+.carousel-img.prev {
+    transform: translateX(-100%); /* Move 'prev' item to the left */
+}
+
+.img-content.prev,
+.carousel-img.next {
+    transform: translateX(100%); /* Move 'next' item to the right */
+}
+
+/* dots on the bottom of the caroussel */
+.carousel-dots {
+    width: 10em;
+    height: 3em;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 4000;
+}
+
+.carousel-dot {
+    height: .7rem;
+    width: .7rem;
+    border-radius: .5em;
+    background-color: white;
+}
+
+.carousel-dot.initial,
+.carousel-dot.active-dot {
+    background-color: teal;
+}
+
+section:not(:first-child) h2,
+section:not(:first-child) p {
+    margin: .9rem;
+}
+
+
+
+
+
+/*/////////////////////////   horizontal scroll for the links    ///////////////////////*/
+

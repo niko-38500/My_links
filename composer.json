@@ -1,0 +1,19 @@
+{
+    "name": "nicol/dashboard",
+    "description": "dashboard with favorit and portfolio",
+    "type": "project",
+    "authors": [
+        {
+            "name": "nicolas",
+            "email": "nicolas.montmayeur@hotmail.fr"
+        }
+    ],
+    "require": {
+      "ext-pdo": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}

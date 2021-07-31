@@ -1,0 +1,5 @@
+{
+    "dsn": "mysql:host=localhost:3307;dbname=my_links;charset=UTF8;",
+    "username": "root",
+    "password": "root"
+}
